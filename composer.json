@@ -1,0 +1,36 @@
+{
+  "name": "janwennrich/boardgames",
+  "description": "Static site generator for my boardgames hobby",
+  "type": "project",
+  "require": {
+    "php": "^8.2",
+    "php-di/php-di": "^7.0.7",
+    "twig/twig": "^3.14.0",
+    "nataniel/bggxmlapi2": "^1.1.5"
+  },
+  "require-dev": {
+    "captainhook/captainhook": "^5.23.5",
+    "phpstan/phpstan": "^1.12.3",
+    "squizlabs/php_codesniffer": "^3.10.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "JanWennrich\\BoardGames\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "JanWennrich\\BoardGames\\": "tests/"
+    }
+  },
+  "minimum-stability": "stable",
+  "config": {
+    "sort-packages": true
+  },
+  "scripts": {
+    "test": [
+      "vendor/bin/phpstan",
+      "vendor/bin/phpcs"
+    ]
+  }
+}
