@@ -1,14 +1,14 @@
 :root {
     --font-size: 16px;
-    --color-background: #242629;
-    --color-background-darkened: #16161a;
+    --color-background: #55423d;
+    --color-background-darkened: #3e332b;
     --color-headline: #fffffe;
-    --color-paragraph: #94a1b2;
-    --color-button: #7f5af0;
-    --color-button-text: #fffffe;
-    --color-highlight: #7f5af0;
-    --color-secondary: #72757e;
-    --color-tertiary: #2cb67d;
+    --color-paragraph: #fff3ec;
+    --color-button: #ffc0ad;
+    --color-button-text: #271c19;
+    --color-highlight: #e78fb3;
+    --color-secondary: #ffc0ad;
+    --color-tertiary: #9656a1;
 }
 
 @font-face {
@@ -21,4 +21,33 @@ body {
     color: var(--color-paragraph);
     font-family: "Oswald", sans-serif;
     font-size: var(--font-size);
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: var(--color-headline);
+}
+
+.date {
+    margin-bottom: 50px;
+}
+
+.played-boardgames {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 50px;
+    row-gap: 50px;
+}
+
+
+.boardgame {
+    height: 150px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.boardgame-image {
+    object-fit: contain;
 }

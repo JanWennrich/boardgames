@@ -1,14 +1,19 @@
-<ol>
-    {% for date, plays in playsGroupedByDate %}
-        <section>
-            <span><time datetime="{{ date }}">{{ date|date("d.m.y") }}</time></span>
-            <ol>
-                {% for play in plays %}
-                    <li>
-                        <img src="{{ play.boardgame.thumbnailUrl }}" alt="{{ play.boardgame.title }}" title="{{ play.boardgame.title }}"/>
-                    </li>
-                {% endfor %}
-            </ol>
-        </section>
-    {% endfor %}
-</ol>
+{% for date, plays in playsGroupedByDate %}
+    <section class="date">
+        <span class="date-label">
+            <time datetime="{{ date }}">{{ date|date("d.m.y") }}</time>
+        </span>
+        <div class="played-boardgames">
+            {% for play in plays %}
+                <article class="boardgame">
+                    <img class="boardgame-image"
+                         src="{{ play.boardgame.thumbnailUrl }}"
+                         alt="{{ play.boardgame.title }}"
+                         title="{{ play.boardgame.title }}"
+                         loading="lazy"
+                    />
+                </article>
+            {% endfor %}
+        </div>
+    </section>
+{% endfor %}
