@@ -1,5 +1,13 @@
 <ol>
-    {% for play in plays %}
-        <li>{{ play.getObjectName() }}</li>
+    {% for date, plays in playsGroupedByDate %}
+        <li>
+            <span><time datetime="{{ date }}">{{ date|date("d.m.y") }}</time></span>
+            <ul>
+                {% for play in plays %}
+                    <li>{{ play.getObjectName() }}</li>
+                    <li>{{ play.quantity }}x</li>
+                {% endfor %}
+            </ul>
+        </li>
     {% endfor %}
 </ol>

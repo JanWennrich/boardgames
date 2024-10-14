@@ -14,8 +14,14 @@ final readonly class HtmlGenerator
     {
         $plays = $this->plays->getForUser($bggUsername);
 
+        $playsGroupedByDate = [];
+
+        foreach ($plays as $play) {
+            $playsGroupedByDate[$play->getDate()][] = $play;
+        }
+
         $params = [
-            'plays' => $this->plays->getPlays($bggUsername),
+            'playsGroupedByDate' => $playsGroupedByDate,
         ];
 
         return $this->twig->render('page.twig', $params);
