@@ -20,7 +20,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "JanWennrich\\BoardGames\\": "tests/"
+      "JanWennrich\\BoardGames\\Test\\": "tests/"
     }
   },
   "minimum-stability": "stable",

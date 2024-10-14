@@ -16,6 +16,13 @@ $diContainer = new \DI\Container([
     PlaysLoaderInterface::class => \DI\get(PlaysLoader::class),
 ]);
 
+if (getenv('BGG_API') === 'mocked') {
+    $diContainer->set(
+        PlaysLoaderInterface::class,
+        \DI\get(\JanWennrich\BoardGames\Test\Stub\PlaysLoader::class),
+    );
+}
+
 $bggUsername = $diContainer->get('bgg.username');
 
 $html = $diContainer->get(HtmlGenerator::class)->generateHtml($bggUsername);
