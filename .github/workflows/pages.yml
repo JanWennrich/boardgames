@@ -8,6 +8,9 @@ on:
     branches: 
     - main
 
+env:
+  BGG_USERNAME: ${{ vars.BGG_USERNAME }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
