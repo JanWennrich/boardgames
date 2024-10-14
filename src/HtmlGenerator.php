@@ -12,9 +12,12 @@ final readonly class HtmlGenerator
 
     public function generateHtml(string $bggUsername): string
     {
+        $plays = $this->plays->getForUser($bggUsername);
+
         $params = [
             'plays' => $this->plays->getPlays($bggUsername),
         ];
+
         return $this->twig->render('page.twig', $params);
     }
 }

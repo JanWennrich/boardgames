@@ -16,7 +16,7 @@ class Plays
      *
      * @throws \Nataniel\BoardGameGeek\Exception
      */
-    public function getPlays(string $bggUsername): array
+    public function getForUser(string $bggUsername): array
     {
         return $this->bggApiClient->getPlays(['username' => $bggUsername]);
     }
