@@ -6,8 +6,10 @@ use Twig\Environment;
 
 final readonly class HtmlGenerator
 {
-    public function __construct(private Environment $twig, private Plays $plays)
-    {
+    public function __construct(
+        private Environment $twig,
+        private PlaysLoaderInterface $plays,
+    ) {
     }
 
     public function generateHtml(string $bggUsername): string
@@ -17,11 +19,11 @@ final readonly class HtmlGenerator
         $playsGroupedByDate = [];
 
         foreach ($plays as $play) {
-            $playsGroupedByDate[$play->getDate()][] = $play;
+            $playsGroupedByDate[$play->playDateTime->format('c')][] = $play;
         }
 
         $params = [
-            'playsGroupedByDate' => $playsGroupedByDate,
+            'playsGroupedByDate' => $playsGroupedByDate
         ];
 
         return $this->twig->render('page.twig', $params);

@@ -1,13 +1,14 @@
 <ol>
     {% for date, plays in playsGroupedByDate %}
-        <li>
+        <section>
             <span><time datetime="{{ date }}">{{ date|date("d.m.y") }}</time></span>
-            <ul>
+            <ol>
                 {% for play in plays %}
-                    <li>{{ play.getObjectName() }}</li>
-                    <li>{{ play.quantity }}x</li>
+                    <li>
+                        <img src="{{ play.boardgame.thumbnailUrl }}" alt="{{ play.boardgame.title }}" title="{{ play.boardgame.title }}"/>
+                    </li>
                 {% endfor %}
-            </ul>
-        </li>
+            </ol>
+        </section>
     {% endfor %}
 </ol>

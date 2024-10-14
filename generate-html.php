@@ -1,6 +1,8 @@
 <?php
 
 use JanWennrich\BoardGames\HtmlGenerator;
+use JanWennrich\BoardGames\PlaysLoader;
+use JanWennrich\BoardGames\PlaysLoaderInterface;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
@@ -11,6 +13,7 @@ $diContainer = new \DI\Container([
     Environment::class => \DI\factory(function () {
         return new Environment(new FilesystemLoader(__DIR__ . '/templates'));
     }),
+    PlaysLoaderInterface::class => \DI\get(PlaysLoader::class),
 ]);
 
 $bggUsername = $diContainer->get('bgg.username');
