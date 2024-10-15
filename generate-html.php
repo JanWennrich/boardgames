@@ -6,6 +6,7 @@ use JanWennrich\BoardGames\OwnedBoardgamesLoaderInterface;
 use JanWennrich\BoardGames\PlayedBoardgamesLoader;
 use JanWennrich\BoardGames\PlayedBoardgamesLoaderInterface;
 use JanWennrich\BoardGames\Test\Stub\OwnedBoardgamesLoaderStub;
+use JanWennrich\BoardGames\Test\Stub\PlayedBoardgamesLoaderStub;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
@@ -23,7 +24,7 @@ $diContainer = new \DI\Container([
 if (getenv('BGG_API') === 'mocked') {
     $diContainer->set(
         PlayedBoardgamesLoaderInterface::class,
-        \DI\get(\JanWennrich\BoardGames\Test\Stub\PlayedBoardgamesLoader::class),
+        \DI\get(PlayedBoardgamesLoaderStub::class),
     );
 
     $diContainer->set(

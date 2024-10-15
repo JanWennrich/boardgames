@@ -4,7 +4,7 @@ namespace JanWennrich\BoardGames\Test\Stub;
 
 use JanWennrich\BoardGames\PlayedBoardgamesLoaderInterface;
 
-class PlayedBoardgamesLoader implements PlayedBoardgamesLoaderInterface
+class PlayedBoardgamesLoaderStub implements PlayedBoardgamesLoaderInterface
 {
     public function getForUser(string $bggUsername): array
     {
