@@ -1,0 +1,5 @@
+<section class="boardgame-listing boardgames-owned">
+    {% for boardgame in ownedBoardgames %}
+        {{ include('boardgame.twig', {'boardgame' : boardgame}) }}
+    {% endfor %}
+</section>

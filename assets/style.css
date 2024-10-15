@@ -31,7 +31,7 @@ h1,h2,h3,h4,h5,h6 {
     margin-bottom: 50px;
 }
 
-.played-boardgames {
+.boardgame-listing {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
