@@ -5,14 +5,7 @@
         </span>
         <div class="played-boardgames">
             {% for play in plays %}
-                <article class="boardgame">
-                    <img class="boardgame-image"
-                         src="{{ play.boardgame.thumbnailUrl }}"
-                         alt="{{ play.boardgame.title }}"
-                         title="{{ play.boardgame.title }}"
-                         loading="lazy"
-                    />
-                </article>
+                {{ include('boardgame.twig', {'boardgame' : play.boardgame}) }}
             {% endfor %}
         </div>
     </section>
