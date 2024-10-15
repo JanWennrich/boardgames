@@ -2,7 +2,7 @@
 
 namespace JanWennrich\BoardGames;
 
-interface PlaysLoaderInterface
+interface PlayedBoardgamesLoaderInterface
 {
     /**
      * @return Play[]

@@ -1,8 +1,8 @@
 <?php
 
 use JanWennrich\BoardGames\HtmlGenerator;
-use JanWennrich\BoardGames\PlaysLoader;
-use JanWennrich\BoardGames\PlaysLoaderInterface;
+use JanWennrich\BoardGames\PlayedBoardgamesLoader;
+use JanWennrich\BoardGames\PlayedBoardgamesLoaderInterface;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
@@ -13,13 +13,13 @@ $diContainer = new \DI\Container([
     Environment::class => \DI\factory(function () {
         return new Environment(new FilesystemLoader(__DIR__ . '/templates'));
     }),
-    PlaysLoaderInterface::class => \DI\get(PlaysLoader::class),
+    PlayedBoardgamesLoaderInterface::class => \DI\get(PlayedBoardgamesLoader::class),
 ]);
 
 if (getenv('BGG_API') === 'mocked') {
     $diContainer->set(
-        PlaysLoaderInterface::class,
-        \DI\get(\JanWennrich\BoardGames\Test\Stub\PlaysLoader::class),
+        PlayedBoardgamesLoaderInterface::class,
+        \DI\get(\JanWennrich\BoardGames\Test\Stub\PlayedBoardgamesLoader::class),
     );
 }
 

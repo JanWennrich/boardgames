@@ -4,7 +4,7 @@ namespace JanWennrich\BoardGames;
 
 use Nataniel\BoardGameGeek\Client;
 
-class PlaysLoader implements PlaysLoaderInterface
+class PlayedBoardgamesLoader implements PlayedBoardgamesLoaderInterface
 {
     public function __construct(
         private readonly Client $bggApiClient,

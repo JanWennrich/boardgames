@@ -8,7 +8,7 @@ final readonly class HtmlGenerator
 {
     public function __construct(
         private Environment $twig,
-        private PlaysLoaderInterface $plays,
+        private PlayedBoardgamesLoaderInterface $plays,
     ) {
     }
 
