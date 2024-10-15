@@ -8,7 +8,7 @@ class PlayedBoardgamesLoader implements PlayedBoardgamesLoaderInterface
 {
     public function __construct(
         private readonly Client $bggApiClient,
-        private readonly ThumbnailLoader $thumbnailLoader,
+        private readonly BoardgameThumbnailLoader $thumbnailLoader,
     ) {
     }
 
