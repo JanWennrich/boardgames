@@ -8,6 +8,6 @@ class PlayedBoardgamesLoaderStub implements PlayedBoardgamesLoaderInterface
 {
     public function getForUser(string $bggUsername): array
     {
-        return unserialize(file_get_contents(__DIR__ . '/../SerializedData/boardgame-plays.php'));
+        return unserialize(file_get_contents(__DIR__ . '/../SerializedData/boardgames-played.serialized.txt'));
     }
 }
