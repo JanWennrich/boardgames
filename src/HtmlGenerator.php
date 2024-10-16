@@ -28,7 +28,7 @@ final readonly class HtmlGenerator
         $playsGroupedByDate = [];
 
         foreach ($plays as $play) {
-            $playsGroupedByDate[$play->playDateTime->format('c')][] = $play;
+            $playsGroupedByDate[$play->playDateTime->format('d.m.y')][] = $play->boardgame;
         }
 
         $params = [

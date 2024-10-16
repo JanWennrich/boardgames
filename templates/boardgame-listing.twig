@@ -1,0 +1,13 @@
+{% for sectionTitle, boardgameGroup in boardgameGroups %}
+    <section class="boardgame-listing-section">
+        <span class="boardgame-listing-section-title">
+                {{ sectionTitle|upper }}
+        </span>
+
+        <div class="boardgame-listing">
+            {% for boardgame in boardgameGroup %}
+                {{ include('boardgame.twig', {'boardgame': boardgame}) }}
+            {% endfor %}
+        </div>
+    </section>
+{% endfor %}
