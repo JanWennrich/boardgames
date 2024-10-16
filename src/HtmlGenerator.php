@@ -17,6 +17,12 @@ final readonly class HtmlGenerator
     {
         $ownedBoardgames = $this->ownedBoardgamesLoader->getForUser($bggUsername);
 
+        $ownedBoardgamesGroupedByFirstLetter = [];
+
+        foreach ($ownedBoardgames as $ownedBoardgame) {
+            $ownedBoardgamesGroupedByFirstLetter[mb_strtolower($ownedBoardgame->title[0])][] = $ownedBoardgame;
+        }
+
         $plays = $this->plays->getForUser($bggUsername);
 
         $playsGroupedByDate = [];
@@ -27,7 +33,7 @@ final readonly class HtmlGenerator
 
         $params = [
             'playsGroupedByDate' => $playsGroupedByDate,
-            'ownedBoardgames' => $ownedBoardgames
+            'ownedBoardgamesGroupedByFirstLetter' => $ownedBoardgamesGroupedByFirstLetter
         ];
 
         return $this->twig->render('page.twig', $params);
