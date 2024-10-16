@@ -1,14 +1,8 @@
 :root {
     --font-size: 16px;
-    --color-background: #55423d;
-    --color-background-darkened: #3e332b;
+    --color-background: #6b544f;
     --color-headline: #fffffe;
     --color-paragraph: #fff3ec;
-    --color-button: #ffc0ad;
-    --color-button-text: #271c19;
-    --color-highlight: #e78fb3;
-    --color-secondary: #ffc0ad;
-    --color-tertiary: #9656a1;
 }
 
 @font-face {
@@ -21,33 +15,40 @@ body {
     color: var(--color-paragraph);
     font-family: "Oswald", sans-serif;
     font-size: var(--font-size);
+    line-height: 1.5;
+    padding: 20px;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1, h2, h3, h4, h5, h6 {
     color: var(--color-headline);
 }
 
-.boardgame-listing-section {
-    margin-bottom: 50px;
-}
-
 .boardgame-listing {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    column-gap: 50px;
-    row-gap: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 30px;
+    justify-items: center;
+    margin-bottom: 60px;
 }
-
 
 .boardgame {
+    width: 150px;
     height: 150px;
-    width: auto;
     display: flex;
-    justify-content: center;
-    align-items: baseline;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    transition: transform 0.2s ease-in-out;
+}
+
+.boardgame:hover {
+    transform: scale(1.05);
 }
 
 .boardgame-image {
     object-fit: contain;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
