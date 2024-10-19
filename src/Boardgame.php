@@ -7,7 +7,7 @@ class Boardgame
     public function __construct(
         public string $title,
         public string $thumbnailUrl,
-        public string $bggId
+        public int $bggId
     ) {
     }
 
