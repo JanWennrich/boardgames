@@ -1,40 +1,23 @@
 <?php
 
+use Crell\Serde\SerdeCommon;
 use JanWennrich\BoardGames\HtmlGenerator;
-use JanWennrich\BoardGames\OwnedBoardgamesLoader;
-use JanWennrich\BoardGames\OwnedBoardgamesLoaderInterface;
-use JanWennrich\BoardGames\PlayedBoardgamesLoader;
-use JanWennrich\BoardGames\PlayedBoardgamesLoaderInterface;
-use JanWennrich\BoardGames\Test\Stub\OwnedBoardgamesLoaderStub;
-use JanWennrich\BoardGames\Test\Stub\PlayedBoardgamesLoaderStub;
-use Twig\Environment;
-use Twig\Loader\FilesystemLoader;
 
-require_once "vendor/autoload.php";
+require_once __DIR__ . '/vendor/autoload.php';
 
-$diContainer = new \DI\Container([
-    'bgg.username' => \DI\env('BGG_USERNAME'),
-    Environment::class => \DI\factory(function () {
-        return new Environment(new FilesystemLoader(__DIR__ . '/templates'));
-    }),
-    PlayedBoardgamesLoaderInterface::class => \DI\get(PlayedBoardgamesLoader::class),
-    OwnedBoardgamesLoaderInterface::class => \DI\get(OwnedBoardgamesLoader::class),
-]);
+$containerConfig = require_once __DIR__ . "/container-config.php";
 
-if (getenv('BGG_API') === 'mocked') {
-    $diContainer->set(
-        PlayedBoardgamesLoaderInterface::class,
-        \DI\get(PlayedBoardgamesLoaderStub::class),
-    );
+$diContainer = new \DI\Container($containerConfig);
 
-    $diContainer->set(
-        OwnedBoardgamesLoaderInterface::class,
-        \DI\get(OwnedBoardgamesLoaderStub::class),
-    );
-}
+$boardgamesOwnerSerializedPath = $diContainer->get('serialization.path.boardgames.owned');
+$boardgamesOwnedSerialized = file_get_contents($boardgamesOwnerSerializedPath);
+$boardgamesOwned = unserialize($boardgamesOwnedSerialized ?: throw new Exception("Could not read owned boardgames from '$boardgamesOwnerSerializedPath'"));
 
-$bggUsername = $diContainer->get('bgg.username');
+$boardgamesPlayedSerializedPath = $diContainer->get('serialization.path.boardgames.played');
+$boardgamesPlayedSerialized = file_get_contents($boardgamesPlayedSerializedPath);
+$boardgamesPlayed = unserialize($boardgamesPlayedSerialized ?: throw new Exception("Could not read played boardgames from '$boardgamesPlayedSerializedPath'"));
 
-$html = $diContainer->get(HtmlGenerator::class)->generateHtml($bggUsername);
+$htmlGenerator = $diContainer->get(HtmlGenerator::class);
+$html = $htmlGenerator->generateHtml($boardgamesOwned, $boardgamesPlayed);
 
-echo $html;
+file_put_contents(__DIR__ . '/build/index.html', $html);

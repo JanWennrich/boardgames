@@ -13,22 +13,23 @@ class OwnedBoardgamesLoader implements OwnedBoardgamesLoaderInterface
     }
 
     /**
-     * @return Boardgame[]
      * @throws \Nataniel\BoardGameGeek\Exception
      */
-    public function getForUser(string $bggUsername): array
+    public function getForUser(string $bggUsername): BoardgameCollection
     {
         $ownedBoardgames = $this->bggApiClient->getCollection([
             'username' => $bggUsername,
             'own' => 1,
         ]);
 
-        return array_map(
+        $ownedBoardgames = array_map(
             fn(CollectionItem $collectionItem) => new Boardgame(
                 $collectionItem->getName(),
                 $collectionItem->getThumbnail(),
             ),
             $ownedBoardgames,
         );
+
+        return new BoardgameCollection($ownedBoardgames);
     }
 }

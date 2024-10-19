@@ -13,10 +13,9 @@ class PlayedBoardgamesLoader implements PlayedBoardgamesLoaderInterface
     }
 
     /**
-     * @return Play[]
      * @throws \Nataniel\BoardGameGeek\Exception|\DateMalformedStringException
      */
-    public function getForUser(string $bggUsername): array
+    public function getForUser(string $bggUsername): PlayCollection
     {
         $bggPlays = $this->bggApiClient->getPlays(['username' => $bggUsername]);
 
@@ -24,7 +23,7 @@ class PlayedBoardgamesLoader implements PlayedBoardgamesLoaderInterface
 
         $playedGamesThumbnails = $this->thumbnailLoader->getForBggGameIds($bggPlayedGamesIds);
 
-        return array_map(
+        $plays = array_map(
             function (\Nataniel\BoardGameGeek\Play $bggPlay) use ($playedGamesThumbnails) {
                 return new Play(
                     new Boardgame($bggPlay->getObjectName(), $playedGamesThumbnails[$bggPlay->getObjectId()]),
@@ -33,5 +32,7 @@ class PlayedBoardgamesLoader implements PlayedBoardgamesLoaderInterface
             },
             $bggPlays,
         );
+
+        return new PlayCollection($plays);
     }
 }

@@ -7,27 +7,21 @@ use Twig\Environment;
 final readonly class HtmlGenerator
 {
     public function __construct(
-        private Environment $twig,
-        private PlayedBoardgamesLoaderInterface $plays,
-        private OwnedBoardgamesLoaderInterface $ownedBoardgamesLoader
+        private Environment $twig
     ) {
     }
 
-    public function generateHtml(string $bggUsername): string
+    public function generateHtml(BoardgameCollection $boardgamesOwned, PlayCollection $boardgamesPlayed): string
     {
-        $ownedBoardgames = $this->ownedBoardgamesLoader->getForUser($bggUsername);
-
         $ownedBoardgamesGroupedByFirstLetter = [];
 
-        foreach ($ownedBoardgames as $ownedBoardgame) {
+        foreach ($boardgamesOwned as $ownedBoardgame) {
             $ownedBoardgamesGroupedByFirstLetter[mb_strtolower($ownedBoardgame->title[0])][] = $ownedBoardgame;
         }
 
-        $plays = $this->plays->getForUser($bggUsername);
-
         $playsGroupedByDate = [];
 
-        foreach ($plays as $play) {
+        foreach ($boardgamesPlayed as $play) {
             $playsGroupedByDate[$play->playDateTime->format('d.m.y')][] = $play->boardgame;
         }
 

@@ -4,8 +4,5 @@ namespace JanWennrich\BoardGames;
 
 interface OwnedBoardgamesLoaderInterface
 {
-    /**
-     * @return Boardgame[]
-     */
-    public function getForUser(string $bggUsername): array;
+    public function getForUser(string $bggUsername): BoardgameCollection;
 }
