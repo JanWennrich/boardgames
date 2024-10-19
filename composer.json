@@ -3,7 +3,7 @@
   "description": "Static site generator for my boardgames hobby",
   "type": "project",
   "require": {
-    "php": "^8.2",
+    "php": "~8.3",
     "nataniel/bggxmlapi2": "^1.1.5",
     "php-di/php-di": "^7.0.7",
     "ramsey/collection": "^2.0",
