@@ -26,6 +26,7 @@ class OwnedBoardgamesLoader implements OwnedBoardgamesLoaderInterface
             fn(CollectionItem $collectionItem) => new Boardgame(
                 $collectionItem->getName(),
                 $collectionItem->getThumbnail(),
+                $collectionItem->getObjectId()
             ),
             $ownedBoardgames,
         );

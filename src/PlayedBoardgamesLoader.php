@@ -26,7 +26,7 @@ class PlayedBoardgamesLoader implements PlayedBoardgamesLoaderInterface
         $plays = array_map(
             function (\Nataniel\BoardGameGeek\Play $bggPlay) use ($playedGamesThumbnails) {
                 return new Play(
-                    new Boardgame($bggPlay->getObjectName(), $playedGamesThumbnails[$bggPlay->getObjectId()]),
+                    new Boardgame($bggPlay->getObjectName(), $playedGamesThumbnails[$bggPlay->getObjectId()], $bggPlay->getObjectId()),
                     new \DateTimeImmutable($bggPlay->getDate()),
                 );
             },
