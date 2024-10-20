@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-<h2>Wishlisted</h2>
-{{ include('boardgame-listing.twig', {'boardgameGroups': wishlistedBoardgamesGroupedByTextualWantLevel}) }}
-<h2>Owned</h2>
-{{ include('boardgame-listing.twig', {'boardgameGroups': ownedBoardgamesGroupedByFirstLetter}) }}
-<h2>Played</h2>
+<h2>Play History</h2>
 {{ include('boardgame-listing.twig', {'boardgameGroups': playsGroupedByDate}) }}
+<h2>Wishlist</h2>
+{{ include('boardgame-listing.twig', {'boardgameGroups': wishlistedBoardgamesGroupedByTextualWantLevel}) }}
+<h2>Collection</h2>
+{{ include('boardgame-listing.twig', {'boardgameGroups': ownedBoardgamesGroupedByFirstLetter}) }}
 </body>
 <script src="script.js"></script>
 </html>
