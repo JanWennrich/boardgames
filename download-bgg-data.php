@@ -3,6 +3,8 @@
 use Crell\Serde\SerdeCommon;
 use JanWennrich\BoardGames\OwnedBoardgamesLoader;
 use JanWennrich\BoardGames\PlayedBoardgamesLoader;
+use JanWennrich\BoardGames\WishlistedBoardgamesLoader;
+use JanWennrich\BoardGames\WishlistedBoardgamesLoaderInterface;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -11,6 +13,11 @@ $containerConfig = require_once __DIR__ . "/container-config.php";
 $diContainer = new \DI\Container($containerConfig);
 
 $bggUsername = $diContainer->get('bgg.username');
+
+$wishlistedBoardgames = $diContainer->get(WishlistedBoardgamesLoaderInterface::class)->getForUser($bggUsername);
+$wishlistedBoardgamesSerialized = serialize($wishlistedBoardgames);
+$wishlistedBoardgamesSerializationPath = $diContainer->get('serialization.path.boardgames.wishlisted');
+file_put_contents($wishlistedBoardgamesSerializationPath, $wishlistedBoardgamesSerialized);
 
 $playedBoardgames = $diContainer->get(PlayedBoardgamesLoader::class)->getForUser($bggUsername);
 $playedBoardgamesSerialized = serialize($playedBoardgames);

@@ -17,7 +17,11 @@ $boardgamesPlayedSerializedPath = $diContainer->get('serialization.path.boardgam
 $boardgamesPlayedSerialized = file_get_contents($boardgamesPlayedSerializedPath);
 $boardgamesPlayed = unserialize($boardgamesPlayedSerialized ?: throw new Exception("Could not read played boardgames from '$boardgamesPlayedSerializedPath'"));
 
+$boardgamesWishlistedSerializedPath = $diContainer->get('serialization.path.boardgames.wishlisted');
+$boardgamesWishlistedSerialized = file_get_contents($boardgamesWishlistedSerializedPath);
+$boardgamesWishlisted = unserialize($boardgamesWishlistedSerialized ?: throw new Exception("Could not read played boardgames from '$boardgamesWishlistedSerializedPath'"));
+
 $htmlGenerator = $diContainer->get(HtmlGenerator::class);
-$html = $htmlGenerator->generateHtml($boardgamesOwned, $boardgamesPlayed);
+$html = $htmlGenerator->generateHtml($boardgamesOwned, $boardgamesPlayed, $boardgamesWishlisted);
 
 file_put_contents(__DIR__ . '/build/index.html', $html);
