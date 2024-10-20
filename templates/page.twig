@@ -10,12 +10,35 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-<h2>Play History</h2>
-{{ include('boardgame-listing.twig', {'boardgameGroups': playsGroupedByDate}) }}
-<h2>Wishlist</h2>
-{{ include('boardgame-listing.twig', {'boardgameGroups': wishlistedBoardgamesGroupedByTextualWantLevel}) }}
-<h2>Collection</h2>
-{{ include('boardgame-listing.twig', {'boardgameGroups': ownedBoardgamesGroupedByFirstLetter}) }}
+<h1>Jan's Boardgames 🎲</h1>
+<div class="tabs">
+    <div class="tab-switches">
+        <label class="tab-switch">
+            <input type="radio" name="tab-switch" checked="">
+            <span id="tab-switch-1" class="tab-switch-title" role="tab" aria-controls="tab-panel-1">🗓️ Play History</span>
+        </label>
+        <label class="tab-switch">
+            <input type="radio" name="tab-switch">
+            <span id="tab-switch-2" class="tab-switch-title" role="tab" aria-controls="tab-panel-2">📋 Wishlist</span>
+        </label>
+
+        <label class="tab-switch">
+            <input type="radio" name="tab-switch">
+            <span id="tab-switch-3" class="tab-switch-title" role="tab" aria-controls="tab-panel-3">📚 Collection</span>
+        </label>
+    </div>
+    <div class="tab-panels">
+        <section id="tab-panel-1" class="tab-panel" aria-labelledby="tab-panel-1">
+            {{ include('boardgame-listing.twig', {'boardgameGroups': playsGroupedByDate}) }}
+        </section>
+        <section id="tab-panel-2" class="tab-panel" aria-labelledby="tab-panel-2">
+            {{ include('boardgame-listing.twig', {'boardgameGroups': wishlistedBoardgamesGroupedByTextualWantLevel}) }}
+        </section>
+        <section id="tab-panel-3" class="tab-panel" aria-labelledby="tab-panel-3">
+            {{ include('boardgame-listing.twig', {'boardgameGroups': ownedBoardgamesGroupedByFirstLetter}) }}
+        </section>
+    </div>
+</div>
 </body>
 <script src="script.js"></script>
 </html>

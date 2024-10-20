@@ -23,6 +23,55 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-headline);
 }
 
+.tabs {
+    .tab-switches {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        border-radius: 8px;
+        background-color: #EEE;
+        box-sizing: border-box;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+        padding: 0.25rem;
+        margin-bottom: 30px;
+
+        .tab-switch {
+            flex: 1 1 auto;
+            text-align: center;
+
+            input {
+                display: none;
+            }
+
+            .tab-switch-title {
+                display: flex;
+                cursor: pointer;
+                align-items: center;
+                justify-content: center;
+                border-radius: 8px;
+                border: none;
+                padding: 0.5rem;
+                color: rgba(51, 65, 85, 1);
+                transition: all .15s ease-in-out;
+            }
+
+            input:checked + .tab-switch-title {
+                background-color: #fff;
+                font-weight: 600;
+            }
+        }
+    }
+    .tab-panels {
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel:first-of-type {
+            display: block;
+        }
+    }
+}
+
 .boardgame-listing {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
