@@ -2,19 +2,15 @@
 
 namespace JanWennrich\BoardGames;
 
-use Nataniel\BoardGameGeek\Client;
 use Nataniel\BoardGameGeek\CollectionItem;
 
 class WishlistedBoardgamesLoader implements WishlistedBoardgamesLoaderInterface
 {
     public function __construct(
-        private readonly Client $bggApiClient,
+        private readonly BggApiClientProxy $bggApiClient,
     ) {
     }
 
-    /**
-     * @throws \Nataniel\BoardGameGeek\Exception
-     */
     public function getForUser(string $bggUsername): WishlistEntryCollection
     {
         $wishlistedBoardgames = $this->bggApiClient->getCollection([

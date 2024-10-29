@@ -2,12 +2,10 @@
 
 namespace JanWennrich\BoardGames;
 
-use Nataniel\BoardGameGeek\Client;
-
 class PlayedBoardgamesLoader implements PlayedBoardgamesLoaderInterface
 {
     public function __construct(
-        private readonly Client $bggApiClient,
+        private readonly BggApiClientProxy $bggApiClient,
         private readonly BoardgameThumbnailLoader $thumbnailLoader,
     ) {
     }

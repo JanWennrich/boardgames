@@ -2,12 +2,11 @@
 
 namespace JanWennrich\BoardGames;
 
-use Nataniel\BoardGameGeek\Client;
 use Nataniel\BoardGameGeek\Exception;
 
 class BoardgameThumbnailLoader
 {
-    public function __construct(private Client $bggApiClient)
+    public function __construct(private BggApiClientProxy $bggApiClient)
     {
     }
 
