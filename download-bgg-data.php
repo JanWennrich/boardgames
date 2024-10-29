@@ -15,16 +15,22 @@ $diContainer = new \DI\Container($containerConfig);
 $bggUsername = $diContainer->get('bgg.username');
 
 $wishlistedBoardgames = $diContainer->get(WishlistedBoardgamesLoaderInterface::class)->getForUser($bggUsername);
-$wishlistedBoardgamesSerialized = serialize($wishlistedBoardgames);
-$wishlistedBoardgamesSerializationPath = $diContainer->get('serialization.path.boardgames.wishlisted');
-file_put_contents($wishlistedBoardgamesSerializationPath, $wishlistedBoardgamesSerialized);
+if (!$wishlistedBoardgames->isEmpty()) {
+    $wishlistedBoardgamesSerialized = serialize($wishlistedBoardgames);
+    $wishlistedBoardgamesSerializationPath = $diContainer->get('serialization.path.boardgames.wishlisted');
+    file_put_contents($wishlistedBoardgamesSerializationPath, $wishlistedBoardgamesSerialized);
+}
 
 $playedBoardgames = $diContainer->get(PlayedBoardgamesLoader::class)->getForUser($bggUsername);
-$playedBoardgamesSerialized = serialize($playedBoardgames);
-$playedBoardgamesSerializationPath = $diContainer->get('serialization.path.boardgames.played');
-file_put_contents($playedBoardgamesSerializationPath, $playedBoardgamesSerialized);
+if (!$playedBoardgames->isEmpty()) {
+    $playedBoardgamesSerialized = serialize($playedBoardgames);
+    $playedBoardgamesSerializationPath = $diContainer->get('serialization.path.boardgames.played');
+    file_put_contents($playedBoardgamesSerializationPath, $playedBoardgamesSerialized);
+}
 
 $ownedBoardgames = $diContainer->get(OwnedBoardgamesLoader::class)->getForUser($bggUsername);
-$ownedBoardgamesSerialized = serialize($ownedBoardgames);
-$ownedBoardgamesSerializationPath = $diContainer->get('serialization.path.boardgames.owned');
-file_put_contents($ownedBoardgamesSerializationPath, $ownedBoardgamesSerialized);
+if (!$ownedBoardgames->isEmpty()) {
+    $ownedBoardgamesSerialized = serialize($ownedBoardgames);
+    $ownedBoardgamesSerializationPath = $diContainer->get('serialization.path.boardgames.owned');
+    file_put_contents($ownedBoardgamesSerializationPath, $ownedBoardgamesSerialized);
+}
