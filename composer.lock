@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b7c453d353b2fdd16f06d7e64493eb5",
+    "content-hash": "34d92f1d810b80f845a6aa410fd5a716",
     "packages": [
         {
             "name": "laravel/serializable-closure",
@@ -767,16 +767,16 @@
     "packages-dev": [
         {
             "name": "captainhook/captainhook",
-            "version": "5.23.5",
+            "version": "5.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/captainhookphp/captainhook.git",
-                "reference": "8b39418081b0db0c8a2996f8740ea44345af6888"
+                "reference": "fd2c03c96b9f56441aa05fb781328eb1163a0343"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/captainhookphp/captainhook/zipball/8b39418081b0db0c8a2996f8740ea44345af6888",
-                "reference": "8b39418081b0db0c8a2996f8740ea44345af6888",
+                "url": "https://api.github.com/repos/captainhookphp/captainhook/zipball/fd2c03c96b9f56441aa05fb781328eb1163a0343",
+                "reference": "fd2c03c96b9f56441aa05fb781328eb1163a0343",
                 "shasum": ""
             },
             "require": {
@@ -839,7 +839,7 @@
             ],
             "support": {
                 "issues": "https://github.com/captainhookphp/captainhook/issues",
-                "source": "https://github.com/captainhookphp/captainhook/tree/5.23.5"
+                "source": "https://github.com/captainhookphp/captainhook/tree/5.24.0"
             },
             "funding": [
                 {
@@ -847,7 +847,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-09-05T15:44:55+00:00"
+            "time": "2024-11-23T20:36:15+00:00"
         },
         {
             "name": "captainhook/secrets",
