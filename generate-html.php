@@ -22,6 +22,6 @@ $boardgamesWishlistedSerialized = file_get_contents($boardgamesWishlistedSeriali
 $boardgamesWishlisted = unserialize($boardgamesWishlistedSerialized ?: throw new Exception("Could not read played boardgames from '$boardgamesWishlistedSerializedPath'"));
 
 $htmlGenerator = $diContainer->get(HtmlGenerator::class);
-$html = $htmlGenerator->generateHtml($boardgamesOwned, $boardgamesPlayed, $boardgamesWishlisted);
+$html = $htmlGenerator->generateHtml($boardgamesOwned, $boardgamesPlayed, $boardgamesWishlisted, $diContainer->get('bgg.username'));
 
 file_put_contents(__DIR__ . '/build/index.html', $html);

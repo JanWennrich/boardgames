@@ -16,6 +16,7 @@ final readonly class HtmlGenerator
         BoardgameCollection $boardgamesOwned,
         PlayCollection $boardgamesPlayed,
         WishlistEntryCollection $wishlistedBoardgames,
+        string $bggUsername
     ): string {
         $ownedBoardgamesGroupedByFirstLetter = [];
 
@@ -55,6 +56,7 @@ final readonly class HtmlGenerator
         }
 
         $params = [
+            'bggUsername' => $bggUsername,
             'playsGroupedByDate' => $playsGroupedByDate,
             'ownedBoardgamesGroupedByFirstLetter' => $ownedBoardgamesGroupedByFirstLetter,
             'wishlistedBoardgamesGroupedByTextualWantLevel' => $wishlistedBoardgamesGroupedByTextualWantLevel,
