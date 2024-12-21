@@ -16,7 +16,8 @@ body {
     font-family: "Oswald", sans-serif;
     font-size: var(--font-size);
     line-height: 1.5;
-    padding: 20px;
+    padding: 1em;
+    margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -84,6 +85,10 @@ a {
     margin-bottom: 60px;
 }
 
+.boardgame-listing:last-of-type {
+    margin-bottom: 0;
+}
+
 .boardgame {
     width: 150px;
     height: 150px;
@@ -104,4 +109,66 @@ a {
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+hr {
+    border: 2px solid #51423b;
+    border-radius: 8px;
+    margin: 1em 0;
+}
+
+footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1em;
+    grid-auto-flow: row;
+    align-items: stretch;
+    grid-template-areas:
+    "portfolio github"
+    "bgg bgg";
+
+    .portfolio {
+        grid-area: portfolio;
+
+        img {
+            border-radius: 8px;
+        }
+    }
+
+    .github {
+        grid-area: github;
+    }
+
+    .bgg {
+        grid-area: bgg;
+    }
+
+    .button {
+        position: relative;
+        display: flex;
+        column-gap: 1em;
+        flex-wrap: wrap;
+        border-radius: 8px;
+        background-color: #EEE;
+        box-sizing: border-box;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        padding: 0.5rem;
+        color: rgba(51, 65, 85, 1);
+        transition: transform 0.2s ease-in-out;
+        flex-direction: row;
+
+        img {
+            height: 35px;
+        }
+    }
+
+    .button:hover {
+        transform: scale(1.02);
+        background-color: #fff;
+    }
 }
