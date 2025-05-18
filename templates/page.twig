@@ -30,13 +30,13 @@
         </label>
     </div>
     <div class="tab-panels">
-        <section id="tab-panel-history" class="tab-panel" aria-labelledby="tab-panel-history">
+        <section id="tab-panel-history" class="tab-panel" aria-labelledby="tab-panel-history" data-tab-slug="history">
             {{ include('boardgame-listing.twig', {'boardgameGroups': playsGroupedByDate}) }}
         </section>
-        <section id="tab-panel-wishlist" class="tab-panel" aria-labelledby="tab-panel-wishlist">
+        <section id="tab-panel-wishlist" class="tab-panel" aria-labelledby="tab-panel-wishlist" data-tab-slug="wishlist">
             {{ include('boardgame-listing.twig', {'boardgameGroups': wishlistedBoardgamesGroupedByTextualWantLevel}) }}
         </section>
-        <section id="tab-panel-collection" class="tab-panel" aria-labelledby="tab-panel-collection">
+        <section id="tab-panel-collection" class="tab-panel" aria-labelledby="tab-panel-collection" data-tab-slug="collection">
             {{ include('boardgame-listing.twig', {'boardgameGroups': ownedBoardgamesGroupedByFirstLetter}) }}
         </section>
     </div>
