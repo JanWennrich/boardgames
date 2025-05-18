@@ -17,27 +17,26 @@
 <div class="tabs">
     <div class="tab-switches">
         <label class="tab-switch">
-            <input type="radio" name="tab-switch" checked="">
-            <span id="tab-switch-1" class="tab-switch-title" role="tab" aria-controls="tab-panel-1">🗓️ Play History</span>
+            <input type="radio" name="tab-switch" aria-controls="tab-panel-history" checked="">
+            <span id="tab-switch-history" class="tab-switch-title" role="tab" >🗓️ Play History</span>
         </label>
         <label class="tab-switch">
-            <input type="radio" name="tab-switch">
-            <span id="tab-switch-2" class="tab-switch-title" role="tab" aria-controls="tab-panel-2">📋 Wishlist</span>
+            <input type="radio" name="tab-switch" aria-controls="tab-panel-wishlist">
+            <span id="tab-switch-wishlist" class="tab-switch-title" role="tab">📋 Wishlist</span>
         </label>
-
         <label class="tab-switch">
-            <input type="radio" name="tab-switch">
-            <span id="tab-switch-3" class="tab-switch-title" role="tab" aria-controls="tab-panel-3">📚 Collection</span>
+            <input type="radio" name="tab-switch" aria-controls="tab-panel-collection">
+            <span id="tab-switch-collection" class="tab-switch-title" role="tab">📚 Collection</span>
         </label>
     </div>
     <div class="tab-panels">
-        <section id="tab-panel-1" class="tab-panel" aria-labelledby="tab-panel-1">
+        <section id="tab-panel-history" class="tab-panel" aria-labelledby="tab-panel-history">
             {{ include('boardgame-listing.twig', {'boardgameGroups': playsGroupedByDate}) }}
         </section>
-        <section id="tab-panel-2" class="tab-panel" aria-labelledby="tab-panel-2">
+        <section id="tab-panel-wishlist" class="tab-panel" aria-labelledby="tab-panel-wishlist">
             {{ include('boardgame-listing.twig', {'boardgameGroups': wishlistedBoardgamesGroupedByTextualWantLevel}) }}
         </section>
-        <section id="tab-panel-3" class="tab-panel" aria-labelledby="tab-panel-3">
+        <section id="tab-panel-collection" class="tab-panel" aria-labelledby="tab-panel-collection">
             {{ include('boardgame-listing.twig', {'boardgameGroups': ownedBoardgamesGroupedByFirstLetter}) }}
         </section>
     </div>
