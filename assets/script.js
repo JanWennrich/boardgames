@@ -36,7 +36,7 @@
 
     // Handle initial load and hash changes
     function activateTabFromHash() {
-        const slug = window.location.hash.substring(1);
+        const [slug] = window.location.hash.substring(1).split('-');
         const panel = document.querySelector(`.tab-panel[data-tab-slug="${slug}"]`);
         if (panel) {
             selectTab(slug, false);
@@ -49,6 +49,46 @@
         }
     }
 
+    function highlightSectionFromHash() {
+        const hash = window.location.hash;
+
+        if (!hash) {
+            return;
+        }
+
+        const panelSlug = hash.split('-')[0];
+        const sectionSlug = hash.replace(panelSlug + '-', '');
+
+        const section = document.querySelector(`.boardgame-listing-section[data-section-slug="${sectionSlug}"]`);
+
+        if (!section) {
+            return;
+        }
+
+        section.classList.add('highlighted');
+    }
+
+    const sectionLinks = document.querySelectorAll('.boardgame-listing-section-link');
+    sectionLinks.forEach(link => {
+        link.addEventListener('click', event => {
+            event.preventDefault();
+            const section = link.parentElement;
+            const panel = section.parentElement;
+            const sectionSlug = section.dataset.sectionSlug;
+            const panelSlug = panel.dataset.tabSlug;
+
+            const sections = panel.querySelectorAll('.boardgame-listing-section');
+            sections.forEach(section => {
+                section.classList.remove('highlighted');
+            });
+            section.classList.add('highlighted');
+
+            window.location.hash = `${panelSlug}-${sectionSlug}`;
+        });
+    });
+
     window.addEventListener('hashchange', activateTabFromHash);
     activateTabFromHash();
+
+    highlightSectionFromHash();
 })();
