@@ -4,11 +4,11 @@ on:
   push:
     branches: 
     - main
-    - bgg-portfolio-generator
+    - bgg-portfolio-generator-action
   pull_request:
     branches: 
     - main
-    - bgg-portfolio-generator
+    - bgg-portfolio-generator-action
   schedule:
     - cron: "0 4 * * *"
   workflow_dispatch:
