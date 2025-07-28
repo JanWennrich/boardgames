@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: JanWennrich/BGG-Portoflio-Generator-Action@main
+      - uses: JanWennrich/BGG-Portfolio-Generator-Action@main
         with:
           bgg_username: Klabauterjan
 
