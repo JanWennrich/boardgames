@@ -19,7 +19,7 @@ jobs:
       - uses: JanWennrich/BGG-Portfolio-Generator-Action@main
         with:
           bgg_username: Klabauterjan
-          bgg_password: ${{ secrets.BGG_PASSWORD }}
+          bgg_token: ${{ secrets.BGG_TOKEN }}
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
